@@ -19,6 +19,7 @@ Example: `test|example.com`
 
 #### POST request:  
 `curl -X POST --data 'fukyou' --data 'l|https://example.com' http://0.0.0.0:8080/thissuperlongstring -v`  
+###### Comment out the `do_POST` function in redirect_serv.py to disable POST.
 
 ### Removing links  
 
