@@ -68,7 +68,6 @@ class MyServer(BaseHTTPRequestHandler):
             self.end_headers()
             newLink = data.split('&')
             if newLink[0] == "fukyou":
-                print(newLink[1])
                 f = open(HardFile, 'a')
                 f.write(f'{newLink[1]}\n')
                 f.close()
