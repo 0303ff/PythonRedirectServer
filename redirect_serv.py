@@ -12,7 +12,6 @@ HardFile = "url.txt"
 URLDict = {}
 threads = []
 
-
 def extractURLS(URLFile):
     URLDict.clear()
     for line in URLFile:
@@ -30,7 +29,6 @@ def urlChecker():
             last_mod = new_mod
             URLS = open(HardFile,'r')
             extractURLS(URLS)
-
 
 html_body = """
 alert(document.domain)
