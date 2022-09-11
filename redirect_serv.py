@@ -38,7 +38,7 @@ def direct(url):
     refresher = f'<head><meta http-equiv="refresh" content="0; url={url}"></head>'
     return refresher
 
-class MyServer(BaseHTTPRequestHandler):
+class Redirect_Server(BaseHTTPRequestHandler):
     def index(self):
         self.page()
         self.wfile.write(bytes(html_body, "utf-8"))
@@ -70,7 +70,7 @@ class MyServer(BaseHTTPRequestHandler):
                 add_url.delete_link(newLink[1]+'|')
 
 if __name__ == "__main__":
-    webServer = HTTPServer((hostName, serverPort), MyServer)
+    webServer = HTTPServer((hostName, serverPort), Redirect_Server)
     #webServer.socket = ssl.wrap_socket(webServer.socket, certfile='fullchain.pem',keyfile='privkey.pem', server_side=True)
     if serverPort == 443:
         print(f"Server starting on https://{hostName}")
