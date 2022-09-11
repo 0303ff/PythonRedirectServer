@@ -8,23 +8,24 @@ def delete_link(Ukey):
     for line in lines:
         if Ukey not in line:
             f.write(line)
-    
     f.close()
+
+def add_link(link):
+    f = open('url.txt', 'a')
+    f.write(f'{link}\n')
 
 def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-a","--add", help="Add URL", action='store_true')
     parser.add_argument("-d","--delete", help="Remove URL", action='store_true')
-    parser.add_argument("-k","--key", help="Folder")
-    parser.add_argument("-u","--url", help="File")
+    parser.add_argument("-k","--key", help="Key for link")
+    parser.add_argument("-u","--url", help="URL")
     args = parser.parse_args()
 
     if args.add:
-        f = open('url.txt', 'a')
-        f.write(f'{args.key}|{args.url}\n')
+        add_link(f'{args.key}|{args.url}')
     if args.delete:
-        find_key = args.key + "|"
-        delete_link(find_key)
+        delete_link(args.key + "|")
 
 main()

@@ -62,23 +62,20 @@ class MyServer(BaseHTTPRequestHandler):
         if self.path == "/HIDETHISURL_TO_EDIT_LINKS":
             length = int(self.headers.get('Content-length', 0))
             data = self.rfile.read(length).decode()
-            self.server_version = "1"
-            self.sys_version = ""
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
+            self.page()
             newLink = data.split('&')
             if newLink[0] == "SecretTEXTtoADDurl":
-                f = open(HardFile, 'a')
-                f.write(f'{newLink[1]}\n')
-                f.close()
+                add_url.add_link(newLink[1])
             if newLink[0] == "SecretTEXTtodeleteURL":
                 add_url.delete_link(newLink[1]+'|')
 
 if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
     #webServer.socket = ssl.wrap_socket(webServer.socket, certfile='fullchain.pem',keyfile='privkey.pem', server_side=True)
-    print("Server started https://%s:%s" % (hostName, serverPort))
+    if serverPort == 443:
+        print(f"Server starting on https://{hostName}")
+    else: 
+        print(f"Server starting on http://{hostName}:{serverPort}")
     try:
         with ThreadPoolExecutor(max_workers=5) as executor:
             threads.append(executor.submit(webServer.serve_forever))
