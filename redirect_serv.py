@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 #import ssl
 import os
 from concurrent.futures import ThreadPoolExecutor
+import add_url
 
 
 HardFile = "url.txt"
@@ -58,7 +59,7 @@ class MyServer(BaseHTTPRequestHandler):
                 self.wfile.write(bytes(direct(URLDict[key]), "utf-8")) 
 
     def do_POST(self):
-        if self.path == "/thissuperlongstring":
+        if self.path == "/HIDETHISURL_TO_EDIT_LINKS":
             length = int(self.headers.get('Content-length', 0))
             data = self.rfile.read(length).decode()
             self.server_version = "1"
@@ -67,10 +68,12 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             newLink = data.split('&')
-            if newLink[0] == "fukyou":
+            if newLink[0] == "SecretTEXTtoADDurl":
                 f = open(HardFile, 'a')
                 f.write(f'{newLink[1]}\n')
                 f.close()
+            if newLink[0] == "SecretTEXTtodeleteURL":
+                add_url.delete_link(newLink[1]+'|')
 
 if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)

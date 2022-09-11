@@ -15,13 +15,16 @@ Example: `test|example.com`
 ### Adding links  
 
 #### add_url.py script:  
-`python3 add_url.py -k test -u https://example.com`  
+`python3 add_url.py --key test --url https://example.com`  
 
 #### POST request:  
-`curl -X POST --data 'fukyou' --data 'l|https://example.com' http://0.0.0.0:8080/thissuperlongstring -v`  
+`curl --data 'SecretTEXTtoADDurl' --data 'l|https://example.com' http://0.0.0.0:8080/HIDETHISURL_TO_EDIT_LINKS`  
 ###### Comment out the `do_POST` function in redirect_serv.py to disable POST.
 
 ### Removing links  
 
 #### add_url.py script:  
-`python3 add_url.py -d test`
+`python3 add_url.py -d test`  
+
+#### POST Request:  
+`curl --data 'SecretTEXTtodeleteURL' --data 'l' http://0.0.0.0:8080/HIDETHISURL_TO_EDIT_LINKS`  

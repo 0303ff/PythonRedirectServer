@@ -1,6 +1,6 @@
 import argparse
 
-def delete_file(Ukey):
+def delete_link(Ukey):
     f = open('url.txt', 'r')
     lines = f.readlines()
     f.close()
@@ -25,6 +25,6 @@ def main():
         f.write(f'{args.key}|{args.url}\n')
     if args.delete:
         find_key = args.key + "|"
-        delete_file(find_key)
+        delete_link(find_key)
 
 main()
