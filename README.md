@@ -1,5 +1,6 @@
 # PythonRedirectServer  
-HTTP Server to serve as a way to redirect links and shorten longer links.  
+HTTP Server to serve as a way to redirect links and/or shorten longer links.  
+This was a project to learn how `BaseHTTPRequestHandler` works in Python3. Many things can be fixed or just made better.  
 
 ## Starting the server  
 
