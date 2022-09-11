@@ -4,11 +4,9 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 import add_url
 
-"""Server config"""
 hostName = "0.0.0.0"
 serverPort = 8080
 
-"""URL FILE"""
 HardFile = "url.txt"
 
 URLDict = {}
@@ -33,7 +31,7 @@ def urlChecker():
             URLS = open(HardFile,'r')
             extractURLS(URLS)
 
-"""This is the index page... it can be whatever"""
+
 html_body = """
 alert(document.domain)
 """
