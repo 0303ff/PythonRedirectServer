@@ -31,7 +31,7 @@ def urlChecker():
             extractURLS(URLS)
 
 html_body = """
-alert(document.domain)
+<p>hi</p>
 """
 
 def direct(url):
